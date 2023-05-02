@@ -1,0 +1,22 @@
+<div class="container">
+  <ul class="list-group mt-3 my-pagination">
+    <li
+      routerLink="/products"
+      class="text-center list-group-item mt-5 text-white bg-info"
+    >
+      <!-- Kategorilere tıklandığında tüm ürünler gelecek-->
+      Kategoriler
+    </li>
+  </ul>
+  <ul class="list-group mt-3 my-pagination">
+    <li
+      *ngFor="let c of categories"
+      routerLink="category/{{ c.id }}"
+      (click)="activeTiklaCategory(c)"
+      [class]="activeClassCategory(c)"
+    >
+      <!--Tüm kategoriler listelenecek-->
+      {{ c.name }}
+    </li>
+  </ul>
+</div>

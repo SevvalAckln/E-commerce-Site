@@ -1,0 +1,11 @@
+li {
+  cursor: pointer;
+}
+
+.container {
+  height: 130%;
+  width: 330px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}

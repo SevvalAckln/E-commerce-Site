@@ -1,0 +1,55 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-info">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/" routerLinkActive="active">CHEAPER</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLinkActive="active"
+            routerLink="/products"
+            >TÜM ÜRÜNLER</a
+          ><!--Tüm ürünler listelenir.-->
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLinkActive="active"
+            routerLink="/product-add"
+            >ÜRÜN EKLE</a
+          ><!--Ürün ekleme işlemi sadece adminler tarafından yapıldığı için bu kısımda kullanıcı ilk başta giriş sayfasına yönlendirilerek
+           admin girişi yapması istenir-->
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <button routerLink="/card" class="btn btn-warning">
+          <i class="bi bi-cart-plus"></i>
+          <strong class="text-dark">{{ totalItem }}</strong>
+        </button>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" routerLinkActive="active"
+            >ADMİN GiRİŞİ YAP</a
+          ><!--Kullanıcı giriş yapabilmek için giriş sayfasına yönlendirilir.-->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active"
+            >KAYIT OL</a
+          ><!--Kullanıcı kayıt olmak için kayıt sayfasına yönlendirilir.-->
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

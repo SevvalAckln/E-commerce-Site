@@ -1,0 +1,66 @@
+<div class="card">
+  <div *ngIf="product" class="row">
+    <div class="col-md-5">
+      <img src="{{ product.urun_foto }}" class="img-fluid rounded-start" />
+    </div>
+    <div class="col-md-5">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.urun_isim | titlecase }}</h5>
+        <!--Ürünün ismi-->
+        <h4 class="card-title">
+          Ürün Fiyatı: {{ product.urun_fiyat | currency: "TRY" }}
+        </h4>
+        <p class="card-text">{{ product.websiteadi }}</p>
+        <a routerLink="/products" class="btn btn-lg btn-outline-success mt-3"
+          >Anasayfaya git</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<!--Bu kısımda ürün detaylarına gidildiğinde karşımıza çıkacak şeyleri gösteriyorsunuz.-->
+
+<div class="card">
+  <div *ngIf="product" class="row">
+    <div class="col-md-5">
+      <img src="{{ product.urun_foto }}" class="img-fluid rounded-start" />
+    </div>
+    <div class="col-md-5">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.urun_isim | titlecase }}</h5>
+        <h2>Sayfa bilgisi alınamadı</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Bu kısımda diğer sayfalarla olan bağlantının kurulamaığı bilgisi kullanıcıya iletiliyor-->
+
+<div class="card">
+  <div *ngIf="product" class="row">
+    <div class="col-md-5">
+      <img src="{{ product.urun_foto }}" class="img-fluid rounded-start" />
+    </div>
+    <div class="col-md-5">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.urun_isim | titlecase }}</h5>
+        <h2>Sayfa bilgisi alınamadı</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Bu kısımda diğer sayfalarla olan bağlantının kurulamaığı bilgisi kullanıcıya iletiliyor-->
+
+<div class="card">
+  <div *ngIf="product" class="row">
+    <div class="col-md-5">
+      <img src="{{ product.urun_foto }}" class="img-fluid rounded-start" />
+    </div>
+    <div class="col-md-5">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.urun_isim | titlecase }}</h5>
+        <h2>Sayfa bilgisi alınamadı</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Bu kısımda diğer sayfalarla olan bağlantının kurulamaığı bilgisi kullanıcıya iletiliyor-->

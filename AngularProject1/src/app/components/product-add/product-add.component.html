@@ -1,0 +1,150 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header bg-warning text-white">
+        <h3 class="title text-center">Ürün Ekle</h3>
+        <!--Admin giriş yaptığında ürün ekleyebilir.-->
+      </div>
+      <div class="card-body">
+        <form [formGroup]="productAddForm">
+          <div class="mt-3">
+            <div class="form-group">
+              <label for="name">Ad:</label>
+              <input
+                name="name"
+                formControlName="name"
+                type="text"
+                id="productName"
+                class="form-control"
+                placeholder="Ad"
+              />
+              <small
+                class="text-danger"
+                *ngIf="
+                  productAddForm.controls['name'].touched &&
+                  productAddForm.hasError('required', 'name')
+                "
+                >*Bu kısım boş bırakılamaz</small
+              >
+              <!--Girilmesi zorunlu kısım-->
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="form-group">
+              <label for="price">Fiyat:</label>
+              <input
+                name="price"
+                formControlName="price"
+                type="number"
+                id="productPrice"
+                class="form-control"
+                placeholder="Fiyat"
+              />
+              <small
+                class="text-danger"
+                *ngIf="
+                  productAddForm.controls['price'].touched &&
+                  productAddForm.hasError('required', 'price')
+                "
+                >*Bu kısım boş bırakılamaz</small
+              ><!--Girilmesi zorunlu kısım-->
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="form-group">
+              <label for="description">Açıklama:</label>
+              <input
+                name="description"
+                formControlName="description"
+                type="text"
+                id="productDescription"
+                class="form-control"
+                placeholder="Açıklama"
+              />
+              <small
+                class="text-danger"
+                *ngIf="
+                  productAddForm.controls['description'].touched &&
+                  productAddForm.hasError('required', 'description')
+                "
+                >*Bu kısım boş bırakılamaz</small
+              ><!--Girilmesi zorunlu kısım-->
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="form-group">
+              <label for="image">Resim:</label>
+              <input
+                name="image"
+                formControlName="image"
+                type="text"
+                id="productImageUrl"
+                class="form-control"
+                placeholder="Resim"
+              />
+              <small
+                class="text-danger"
+                *ngIf="
+                  productAddForm.controls['image'].touched &&
+                  productAddForm.hasError('required', 'image')
+                "
+                >*Bu kısım boş bırakılamaz</small
+              ><!--Girilmesi zorunlu kısım-->
+            </div>
+          </div>
+          <div class="mt-3">
+            <label for="urun_marka">Kategori:</label>
+            <select
+              class="form-select form-select-sm"
+              name="urun_marka"
+              formControlName="urun_marka"
+              type="text"
+              id="productCategoryId"
+              class="form-control"
+              placeholder="Kategori"
+            >
+              <option value="">Seçiniz</option>
+              <option *ngFor="let c of categories" [value]="c.id">
+                {{ c.name }}
+              </option>
+            </select>
+            <small
+              class="text-danger"
+              *ngIf="
+                productAddForm.controls['urun_marka'].touched &&
+                productAddForm.hasError('required', 'urun_marka')
+              "
+              >*Bu kısım boş bırakılamaz</small
+            ><!--Girilmesi zorunlu kısım -->
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button
+          [disabled]="productAddForm.invalid"
+          (click)="addProduct()"
+          class="btn btn-outline-success"
+        >
+          Ekle</button
+        ><!--Ürünlerin eklenmesi için fonksiyonumuzu çağırıyoruz-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngFor="let p of products | filter: filterText" class="card mt-2">
+  <!--Ürünlerin hepsini sıralayıp aşağıdaki bilgiler girilecek-->
+  <img src="{{ p.urun_foto }}" alt="" class="card-img-top" />
+  <div class="card-body">
+    <h5 class="card-title">{{ p.urun_isim }}</h5>
+    <h3 class="card-title">{{ p.urun_fiyat | currency: "TRY" }}</h3>
+    <p class="card-text">{{ p.websiteadi }}</p>
+
+    <a routerLink="/products/{{ p.id }}" class="btn btn-lg btn-info me-2"
+      >Detay</a
+    ><!--Ürün detaylarına erişmek için kullanılacak buton.-->
+    <button (click)="clearCard(p)" type="button" class="btn btn-danger btn-lg">
+      Sil</button
+    ><!--Ürün silmek için buton aktive ediliyor.-->
+  </div>
+</div>

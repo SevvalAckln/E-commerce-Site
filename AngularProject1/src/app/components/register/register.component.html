@@ -1,0 +1,67 @@
+<body class="text-center mt-3">
+  <main class="form-signin">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <h1 class="mb-3">Kayıt Ol</h1>
+      <div class="form-floating">
+        <input
+          formControlName="name"
+          type="text"
+          class="form-control mt-1"
+          id="floatingName"
+          placeholder="Name"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            registerForm.get('name').invalid && registerForm.get('name').touched
+          "
+          >*Bu kısım boş bırakılamaz</small
+        >
+        <label for="floatingInput">İsim</label>
+      </div>
+      <div class="form-floating">
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control mt-1"
+          id="floatingInput"
+          placeholder="name@example.com"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            registerForm.get('email').invalid &&
+            registerForm.get('email').touched
+          "
+          >*Bu kısım boş bırakılamaz</small
+        >
+        <label for="floatingInput">E-posta</label>
+      </div>
+      <div class="form-floating">
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control mt-1"
+          id="floatingPassword"
+          placeholder="Password"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            registerForm.controls['password'].touched &&
+            registerForm.hasError('required', 'password')
+          "
+          >*Bu kısım boş bırakılamaz</small
+        >
+        <label for="floatingPassword">Şifre</label>
+      </div>
+      <button
+        [disabled]="registerForm.invalid"
+        class="w-70 btn btn-success"
+        type="submit"
+      >
+        Kayıt Ol</button
+      ><!--Bilgilerini giren kullanıcı sisteme kayıt olmuş demektir.-->
+    </form>
+  </main>
+</body>

@@ -1,0 +1,54 @@
+<body class="text-center mt-5">
+  <!--Giriş sayfası için ayarlamalar-->
+  <main class="form-signin">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <!--Giriş yap fonksiyonu çağrılıyor-->
+      <h1 class="h3 mb-3 fw-normal text-dark text-uppercase">Giriş Yap</h1>
+      <hr />
+      <div class="form-floating">
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control mt-1"
+          id="floatingInput"
+          placeholder="name@example.com"
+        /><!--Kullanıcıdan
+             email adresi girmesi istenir ve o kısım boş bırakılırsa kullanıcı uyarılır-->
+        <small
+          class="text-danger"
+          *ngIf="
+            loginForm.get('email').invalid && loginForm.get('email').touched
+          "
+          >*Bu kısım boş bırakılamaz</small
+        >
+        <label for="floatingInput">E-mail</label>
+      </div>
+      <div class="form-floating">
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control mt-1"
+          id="floatingPassword"
+          placeholder="Password"
+        /><!--Aynı şeyler
+             kullanıcı şifresi için de geçerlidir-->
+        <small
+          class="text-danger"
+          *ngIf="
+            loginForm.controls['password'].touched &&
+            loginForm.hasError('required', 'password')
+          "
+          >*Bu kısım boş bırakılamaz</small
+        >
+        <label for="floatingPassword">Şifre</label>
+      </div>
+      <button
+        [disabled]="loginForm.invalid"
+        class="w-100 btn btn-outline-primary"
+        type="submit"
+      >
+        Giriş Yap
+      </button>
+    </form>
+  </main>
+</body>

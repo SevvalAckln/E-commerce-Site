@@ -1,0 +1,54 @@
+<div class="d-flex">
+  <label for="filterText" class="form-label"></label>
+  <input
+    [(ngModel)]="filterText"
+    class="form-control me-sm-2 my-2"
+    type="text"
+    placeholder="Ara"
+  />
+  <button class="btn btn-outline-primary sm-0 my-3" type="submit">Ara</button
+  ><!--Arama işlemlerinin yapılacağı kısım-->
+</div>
+
+<div
+  *ngFor="
+    let p of products
+      | filter: filterText
+      | paginate
+        : {
+            itemsPerPage: pageNumber,
+            currentPage: page,
+            totalItems: totalLength
+          }
+  "
+  class="card mt-2"
+>
+  <img src="{{ p.urun_foto }}" alt="" class="card-img-top" />
+  <div class="card-body">
+    <h5 class="card-title">{{ p.urun_isim }}</h5>
+    <h3 class="card-title">{{ p.urun_fiyat | currency: "TRY" }}</h3>
+    <p class="card-text">{{ p.websiteadi }}</p>
+    <button
+      (click)="addToCard(p)"
+      type="button"
+      class="btn btn-warning btn-sm me-2"
+    >
+      Sepete Ekle</button
+    ><!--Ürün kartında olacak-->
+    <a routerLink="/products/{{ p.id }}" class="btn btn-sm btn-info me-2"
+      >Detay</a
+    >
+  </div>
+</div>
+<div class="text-center my-pagination mt-4">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  <div class="pagination">
+    <button class="btn1" (click)="des()">
+      <i class="fa fa-minus"></i>Daha az göster</button
+    ><!--Listelenme kısmında ürünlerin sayılarını azaltabiliriz-->
+    <input class="input" [value]="pageNumber" />
+    <button class="btn1" (click)="inc()">
+      <i class="fa fa-plus"></i>Daha fazla göster</button
+    ><!--Aynı şekilde sayıyı artırabiliriz de-->
+  </div>
+</div>
